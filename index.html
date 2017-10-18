@@ -1,192 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
-    <style>
-        body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,
-        pre, code, form, fieldset, legend, input, textarea, p, blockquote,
-        th, td {
-            margin: 0;
-            padding: 0
-        }
-
-        a:hover, a:visited, a:link, a:active {
-            text-decoration: none;
-            color: #343434;
-        }
-
-        ol, ul {
-            list-style: none
-        }
-
-        input{
-            border: 0;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        body {
-            background: url("img/background01.jpg") no-repeat fixed;
-            background-size: cover;
-        }
-
-        .search {
-            width: 800px;
-            height: 50px;
-            margin: 0 auto;
-            margin-top: 150px;
-            margin-bottom: 50px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .search input {
-            width: 420px;
-            line-height: 38px;
-            box-sizing: border-box;
-            padding-left: 10px;
-        }
-
-        .search a {
-            display: inline-block;
-            width: 150px;
-            line-height: 38px;
-            text-align: center;
-            background-color: #d4d7da;
-            position: relative;
-            top: 2px;
-        }
-
-        .content {
-            width: 800px;
-            background-color: #f8f9fa;
-            margin: 0px auto;
-            padding:10px;
-        }
-
-        .content dl {
-            width: 800px;
-            background-color: tomato;
-            margin: 10px auto;
-            position: relative;
-        }
-        .content dl > dt {
-            width: 150px;
-            /*background-color: cadetblue;*/
-            float: left;
-            text-align: center;
-        }
-
-        .content dl > dt h3 {
-            font-size: 14px;
-            font-weight: normal;
-            line-height: 28px;
-        }
-
-        .content dl > dd {
-            margin-left: 150px;
-            width: 650px;
-            overflow: hidden;
-            background-color: slateblue;
-        }
-
-        .content dl > dd > ul > li {
-            /*background-color: yellow;*/
-            width: 100px;
-            line-height: 28px;
-            float: left;
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        .content dl > dd > ul > li a {
-            display: inline-block;
-            width: 100%;
-            font-size: 14px;
-        }
-
-
-        .content dl .tool {
-            width: 16px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            opacity: 0;
-            transition: all 500ms;
-        }
-
-        .content dl:hover .tool {
-            opacity: 1;
-        }
-
-        .content dl .tool .add {
-            display: block;
-            width: 16px;
-            height: 16px;
-            background-color: darkcyan;
-            position: relative;
-        }
-
-        .content dl .tool .add span {
-            display: block;
-            width: 12px;
-            height: 2px;
-            background-color: gold;
-            position: absolute;
-            top: 7px;
-            left: 2px;
-        }
-
-        .content dl .tool .add span:first-child {
-            transform: rotateZ(90deg);
-        }
-
-        .content dl .addForm{
-            display: none;
-            width: 800px;
-            height: 58px;
-            box-sizing: border-box;
-            text-align: center;
-            padding-top: 15px;
-            background-color: darkcyan;
-            position: absolute;
-            top:0;
-            left: 0;
-            z-index: 1000;
-        }
-
-        .content dl .addForm input{
-            line-height: 18px;
-            margin-right: 30px;
-        }
-
-        .content dl .addForm input[type=text]{
-            padding-left: 5px;
-        }
-        .content dl .addForm .name{
-            width: 150px;
-        }
-
-        .content dl .addForm .address{
-            width: 280px;
-        }
-
-        .content dl .addForm .submit{
-            cursor: pointer;
-            width: 80px;
-            text-align: center;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/nav.css">
 </head>
 <body>
 <div class="search">
-    <input type="text"><a href="#">百度一下</a>
+    <input type="text" maxlength="60"><a href="#">百度一下</a>
 </div>
 <div class="content">
+    <div class="addForm">
+        <form action="">
+            <input type="text" class="name" placeholder="名称">
+            <input type="text" class="address" placeholder="网址">
+            <input type="text" class="type" placeholder="分类" id="type">
+            <div class="select" id="type_list">
+                <span>综合</span>
+                <span>IT</span>
+            </div>
+            <input type="button" class="save" value="保存">
+        </form>
+    </div>
+    <div class="tool">
+        <a href="#"><span class="edit">编辑</span></a>
+        <a href="#"><span class="add">添加</span></a>
+    </div>
     <dl>
         <dt><h3>综合</h3></dt>
         <dd>
@@ -212,19 +51,6 @@
                 <li><a href="#">百度搜索</a></li>
             </ul>
         </dd>
-        <div class="tool">
-            <a href="#" class="add" onclick="toAdd">
-                <span></span>
-                <span></span>
-            </a>
-        </div>
-        <div class="addForm">
-            <form action="">
-                <input type="text" class="name" placeholder="名称">
-                <input type="text" class="address" placeholder="网址">
-                <input type="button" class="submit" value="添加网址">
-            </form>
-        </div>
     </dl>
     <dl>
         <dt><h3>IT</h3></dt>
@@ -251,18 +77,33 @@
                 <li><a href="#">百度搜索</a></li>
             </ul>
         </dd>
-        <div class="tool">
-            <a href="#" class="add">
-                <span></span>
-                <span></span>
-            </a>
-        </div>
+    </dl>
+    <dl>
+        <dt><h3>设计</h3></dt>
+        <dd>
+            <ul>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+                <li><a href="#">百度搜索</a></li>
+            </ul>
+        </dd>
     </dl>
 </div>
-<script>
-    function toAdd() {
-
-    }
-</script>
 </body>
 </html>
