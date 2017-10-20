@@ -13,14 +13,24 @@
 </div>
 <div class="content">
     <div class="addForm">
+        <div class="title">
+            <h3>添加网址</h3>
+            <div class="close">
+                <a href="javascript:void(0);" id="close"><span></span><span></span></a>
+            </div>
+        </div>
         <form action="">
             <input type="text" class="name" placeholder="名称">
-            <input type="text" class="address" placeholder="网址">
-            <input type="text" class="type" placeholder="分类" id="type">
+            <input type="text" class="url" placeholder="网址">
+            <!--<input type="text" class="type" placeholder="分类" id="type">
             <div class="select" id="type_list">
                 <span>综合</span>
                 <span>IT</span>
-            </div>
+            </div>-->
+            <select class="type_list">
+                <option value="">综合</option>
+                <option value="">HTML</option>
+            </select>
             <input type="button" class="save" value="保存">
         </form>
     </div>
@@ -107,5 +117,35 @@
         </dd>
     </dl>
 </div>
+<script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".select span").on("click", function () {
+            alert($(this).html());
+        });
+
+        $("#add").on("click", function () {
+            $("#addPanel").show();
+        });
+
+        $("#close").on("click", function () {
+            $("#addPanel").hide();
+        });
+
+        $("#addSub").on("click", function () {
+            var params = $("#addForm").serialize();
+            $.ajax( {
+                type : "post",
+                url : "add",
+                data : params,
+                dataType: "text",
+                success : function(data) {
+                    $("#addPanel").hide();
+                    console.log(data);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
