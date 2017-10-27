@@ -1,0 +1,188 @@
+body {
+    background: url("../img/background01.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+/* 清除input样式 */
+
+#word, #search {
+    border: 0px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 38px;
+    line-height: 38px;
+    background-color: #FFFFFF;
+    float: left;
+}
+
+#word:focus, #search:focus {
+    border: 0;
+    outline: none;
+}
+
+#word {
+    padding-left: 10px;
+    margin-left: 100px;
+}
+
+.content {
+    margin-top: 150px;
+    /*border: 1px solid tomato;*/
+}
+
+.search {
+    width: 800px;
+    height: 45px;
+    font-size: 14px;
+    margin-bottom: 50px;
+    /*border: 1px solid gold;*/
+}
+
+.search input[type=text] {
+    width: 450px;
+}
+
+.search input[type=submit] {
+    width: 150px;
+    text-align: center;
+    background-color: #f6f7f7;
+    color: #545454;
+    cursor: pointer;
+}
+
+.content .nav-list{
+    min-width: 830px;
+    background-color: #f6f7f7;
+    position: relative;
+    padding: 5px;
+}
+
+.content .title h3 {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 28px;
+}
+
+.content .list li {
+    width: 105px;
+    line-height: 28px;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.content .list li a {
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    color: #44505d;
+}
+
+.content .toolbar{
+    margin-bottom: 0px;
+    padding-right: 20px;
+}
+
+.content .toolbar a{
+    color: rgba(0,0,0,0.85);
+}
+
+
+.content .addPanel {
+    /*display: none;*/
+    z-index: 9999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -34px 0 0 -390px;
+
+    width: 780px;
+    height: 95px;
+    background-color: #f9faf9;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.content .addPanel .title {
+    height: 20px;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-left:5px;
+}
+
+.content .addPanel .title h3 {
+    width: 50px;
+    line-height: 20px;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    color: #545454;
+
+    margin: 0;
+    padding: 0;
+}
+.content .addPanel .title a{
+    color: #343434;
+}
+.content .addPanel input{
+    margin-right: 20px;
+    /*background-color: #44505d;*/
+}
+
+.content .addPanel .input-field{
+    display: inline-block;
+    margin: 0;
+    margin-right: 15px;
+    position: relative;
+}
+
+.content .addPanel .input-field:nth-child(1){
+    width: 120px;
+}
+.content .addPanel .input-field:nth-child(2){
+    width: 240px;
+}
+.content .addPanel .input-field:nth-child(2){
+    width: 180px;
+}
+
+.content .addPanel .input-field .addType{
+    position: absolute;
+    right: -35px;
+    top: 5px;
+    color: #26a69a;
+    padding:0 5px;
+    /*background-color: red;*/
+}
+
+.content .addPanel input[type=text]{
+    padding-left:5px;
+}
+
+.content .addPanel input[type=submit]{
+    padding-top:0;
+    padding-bottom:0;
+    height: 30px;
+    line-height:30px;
+    margin-left:20px;
+}
+
+
+.content .addPanel input[type=text]:not(.browser-default){
+    height: 2rem;
+}
+
+.content .addPanel .dropdown-content li {
+    min-height: 30px;
+    line-height: 1rem;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 5px 16px;
+}
