@@ -29,9 +29,9 @@ body {
     background-size: cover;
 }
 
-.search, .content{
+.search, .content {
 
-    box-shadow: 0 0 1px 1px rgba(0,0,0,0.02);
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.02);
 }
 
 .search {
@@ -44,7 +44,7 @@ body {
     box-sizing: border-box;
 }
 
-.search input{
+.search input {
     line-height: 38px;
     box-sizing: border-box;
 }
@@ -84,7 +84,8 @@ body {
     box-sizing: border-box;
     box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
 }
-.content .addForm .title{
+
+.content .addForm .title {
     height: 20px;
     background-color: #FFFFFF;
     margin-bottom: 20px;
@@ -92,30 +93,30 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);;
 }
 
-.content .addForm .title h3{
+.content .addForm .title h3 {
     width: 50px;
     line-height: 20px;
     float: left;
     font-size: 12px;
     font-weight: bold;
     color: #545454;
-    padding-left:2px;
+    padding-left: 2px;
 }
 
-.content .addForm .title .close{
+.content .addForm .title .close {
     width: 20px;
     height: 20px;
     float: right;
     position: relative;
 }
 
-.content .addForm .title .close a{
+.content .addForm .title .close a {
     display: block;
     width: 100%;
     height: 100%;
 }
 
-.content .addForm .title .close span{
+.content .addForm .title .close span {
     display: block;
     width: 14px;
     border-top: 1px solid #545454;
@@ -124,19 +125,17 @@ body {
     left: 2px;
 }
 
-.content .addForm .title .close span:nth-child(1){
+.content .addForm .title .close span:nth-child(1) {
     transform: rotateZ(45deg);
 }
 
-.content .addForm .title .close span:nth-child(2){
+.content .addForm .title .close span:nth-child(2) {
     transform: rotateZ(-45deg);
 }
 
-.content .addForm .title .close a:hover span{
+.content .addForm .title .close a:hover span {
     border: 1px solid #343434;
 }
-
-
 
 .content .addForm form > input {
     line-height: 28px;
@@ -145,7 +144,7 @@ body {
     box-sizing: border-box;
 }
 
-.content .addForm form > input[type=text] {
+.content .addForm form input[type=text] {
     padding-left: 10px;
 }
 
@@ -159,6 +158,7 @@ body {
 
 .content .addForm form .type {
     width: 120px;
+    height: 28px;
 }
 
 .content .addForm form .save {
@@ -168,17 +168,24 @@ body {
     cursor: pointer;
 }
 
-.content .addForm form .type:focus {
+.content .addForm form .selPanel:hover .type {
     border-radius: 2px 2px 0 0;
 }
 
-.content .addForm form .type:focus + .select {
+.content .addForm form .selPanel:hover .select {
     display: block;
 }
 
-.content .addForm .type_list{
+.content .addForm .selPanel {
+    position: relative;
+    display: inline-block;
     width: 120px;
     height: 28px;
+    margin-left: 10px;
+}
+
+.content .addForm .type_list {
+    width: 120px;
     line-height: 28px;
     font-size: 14px;
     border: 0;
@@ -189,22 +196,22 @@ body {
     background-color: #FFF;
     width: 120px;
     position: absolute;
-    right: 148px;
-    top: 68px;
+    left: 0;
+    top: 28px;
     box-sizing: border-box;
 }
 
-.content .addForm .select span {
+.content .addForm .select a {
     display: block;
     width: 120px;
     line-height: 25px;
     text-align: center;
     font-size: 12px;
-    cursor: pointer;
     transition: all 200ms;
+    cursor: pointer;
 }
 
-.content .addForm .select span:hover {
+.content .addForm .select a:hover {
     background-color: #d0d2d7;
 }
 

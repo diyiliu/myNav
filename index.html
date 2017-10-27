@@ -22,15 +22,14 @@
         <form action="">
             <input type="text" class="name" placeholder="名称">
             <input type="text" class="url" placeholder="网址">
-            <!--<input type="text" class="type" placeholder="分类" id="type">
-            <div class="select" id="type_list">
-                <span>综合</span>
-                <span>IT</span>
-            </div>-->
-            <select class="type_list">
-                <option value="">综合</option>
-                <option value="">HTML</option>
-            </select>
+            <div class="selPanel">
+                <input type="text" class="type" placeholder="分类" id="type">
+                <ul class="select" id="type_list">
+                    <li><a href="#">综合</a></li>
+                    <li><a href="#">IT</a></li>
+                    <li><a href="#">HTML</a></li>
+                </ul>
+            </div>
             <input type="button" class="save" value="保存">
         </form>
     </div>
@@ -119,10 +118,20 @@
 </div>
 <script type="text/javascript" src="./js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(".select span").on("click", function () {
-            alert($(this).html());
+    $(document).ready(function () {
+/*        $("#type").on("click", function () {
+            var ul = $("#type_list");
+            if (ul.css("display") == "none") {
+                ul.slideDown("fast");
+            } else {
+                ul.slideUp("fast");
+            }
         });
+
+        $(".select a").on("click", function () {
+            alert($(this).html());
+        });*/
+
 
         $("#add").on("click", function () {
             $("#addPanel").show();
@@ -134,12 +143,12 @@
 
         $("#addSub").on("click", function () {
             var params = $("#addForm").serialize();
-            $.ajax( {
-                type : "post",
-                url : "add",
-                data : params,
+            $.ajax({
+                type: "post",
+                url: "add",
+                data: params,
                 dataType: "text",
-                success : function(data) {
+                success: function (data) {
                     $("#addPanel").hide();
                     console.log(data);
                 }
