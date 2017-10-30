@@ -77,6 +77,16 @@ body {
     width: 100%;
     font-size: 14px;
     color: #44505d;
+    position: relative;
+}
+
+.content .list li a img{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
 }
 
 .content .toolbar{
@@ -90,7 +100,7 @@ body {
 
 
 .content .addPanel {
-    /*display: none;*/
+    display: none;
     z-index: 9999;
     position: absolute;
     top: 50%;
