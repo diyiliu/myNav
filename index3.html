@@ -4,12 +4,108 @@
     <meta charset="UTF-8">
     <title>导航</title>
     <link rel="stylesheet" href="plugin/materialize/css/materialize.css">
+    <link rel="stylesheet" href="plugin/materialize/css/materialize-icon.css">
     <link rel="stylesheet" href="css/nav3.css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="plugin/materialize/js/materialize.js"></script>
-
 </head>
 <body>
-
+<div class="section search" style="box-sizing: border-box">
+    <div class="container">
+        <div class="row">
+            <div class="input-field col m6 offset-m2">
+                <input type="text" class="white">
+            </div>
+            <div class="input-field col m2">
+                <input type="submit" class="btn" value="百度一下">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section main">
+    <div class="container">
+        <div class="row toolbar">
+            <div class="right">
+                <a href="#modal1" class="modal-trigger" title="添加" id="add"><i class="material-icons">playlist_add</i></a>
+                <a href="#"  class="modal-trigger" title="编辑" id="edit"><i class="material-icons">playlist_add_check</i></a>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <div class="row">
+                    <div class="col m2 center">
+                        <h5>综合</h5>
+                    </div>
+                    <ul class="col m10 nav-list">
+                        <li><a href="#"><img src="img/bd.ico">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="row">
+                    <div class="col m2 center">
+                        <h5>综合</h5>
+                    </div>
+                    <ul class="col m10 nav-list">
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                        <li><a href="#">百度搜索</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h5>添加网址</h5>
+        <div class="row">
+            <div class="input-field col m2">
+                <input type="text">
+            </div>
+            <div class="input-field col m6">
+                <input type="text">
+            </div>
+            <div class="input-field col m4">
+                <select>
+                    <option value="" disabled selected>选择类别</option>
+                    <option value="1">综合</option>
+                    <option value="2">新闻</option>
+                    <option value="3">娱乐</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect btn deep-orange">保存</a>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('select').material_select();
+        $('.modal').modal();
+    });
+</script>
 </body>
 </html>
