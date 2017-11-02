@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排序</title>
+    <link rel="stylesheet" href="css/gridly.css">
+    <script src="../../js/jquery-3.2.1.js"></script>
+    <script src="js/gridly.js"></script>
+    <style type="text/css">
+        .gridly {
+            position: relative;
+            width: 960px;
+        }
+
+        .brick.small {
+            width: 140px;
+            height: 140px;
+            background-color: seagreen;
+        }
+
+        .brick.large {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div class="gridly">
+    <div class="brick small"></div>
+    <div class="brick small"></div>
+    <div class="brick large"></div>
+    <div class="brick small"></div>
+    <div class="brick small"></div>
+    <div class="brick large"></div>
+</div>
+<script>
+    $('.gridly').gridly({
+        base: 60, // px
+        gutter: 20, // px
+        columns: 12
+    });
+
+//    $('.gridly').gridly();
+</script>
+</body>
+</html>
