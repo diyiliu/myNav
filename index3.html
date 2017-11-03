@@ -85,7 +85,7 @@
                     <ul class="col m10 gridly nav-list">
                         <li class="brick">
                             <a href="#" class="site"><img src="img/bd.ico">百度搜索1</a>
-                            <a href="#" class="del" class="del"><i class="material-icons tiny">clear</i></a>
+                            <a href="#" class="del"><i class="material-icons tiny">clear</i></a>
                         </li>
                         <li class="brick">
                             <a href="#" class="site"><img src="img/bd.ico">百度搜索2</a>
@@ -139,7 +139,7 @@
                     <option value="2">新闻</option>
                     <option value="3">娱乐</option>
                 </select>
-                <a href="#modal2" class="modal-trigger"><i class="material-icons">more_vert</i></a>
+                <a href="#modal2" class="modal-trigger" id="modal2Show"><i class="material-icons">more_vert</i></a>
             </div>
         </div>
     </div>
@@ -148,7 +148,7 @@
     </div>
 </div>
 
-<div id="modal2" class="modal siteModal">
+<div id="modal2" class="modal typeModal">
     <div class="modal-content">
         <div class="row">
             <div class="input-field col m2">
@@ -158,8 +158,19 @@
                 <input id="type_name" type="text">
             </div>
         </div>
+        <div class="row">
+            <ul class="col m12 typeGroup gridly">
+                <li class="brick">综合<a href="#" class="del"><i class="material-icons tiny">clear</i></a></li>
+                <li class="brick">新闻<a href="#" class="del"><i class="material-icons tiny">clear</i></a></li>
+                <li class="brick">娱乐<a href="#" class="del"><i class="material-icons tiny">clear</i></a></li>
+                <li class="brick">综合<a href="#" class="del"><i class="material-icons tiny">clear</i></a></li>
+                <li class="brick">新闻<a href="#" class="del"><i class="material-icons tiny">clear</i></a></li>
+                <li class="brick">娱乐<a href="#" class="del"><i class="material-icons tiny">clear</i></a></li>
+            </ul>
+        </div>
     </div>
     <div class="modal-footer">
+        <a href="#!" onclick="insertType()" class="modal-action waves-effect btn">插入</a>
         <a href="#!" onclick="addType()" class="modal-action waves-effect btn deep-orange">保存</a>
     </div>
 </div>
@@ -171,61 +182,89 @@
         $('.modal').modal();
 
         $('#main .nav-list .brick .del').click(function () {
-            $(this).parent('li').remove();
+            var group = $(this).closest('.nav-list');
+            var len = $(group).find('li').length;
+            if (len == 1) {
+                var t = $(group).closest('.row').parent('li');
+                $(t).remove();
+            } else {
+                $(this).parent('li').remove();
+            }
         });
 
         $('#sort').click(function () {
             $(this).hide();
             $('#clear').show();
-            $('.gridly').gridly({
+            $('.main .nav-list').addClass('bricks');
+            $('.nav-list').gridly({
                 base: 50, // px
                 gutter: 20, // px
-                columns: 10,
-                callbacks: {reordering: reordering, reordered: reordered}
+                columns: 10
             });
-            $('.main .nav-list').addClass('bricks');
-            $('.gridly').gridly('draggable', 'on');
+            $('.nav-list').gridly('draggable', 'on');
+        });
+
+        $('#modal2Show').click(function () {
+            $('.typeGroup').gridly({
+                base: 40, // px
+                gutter: 45, // px
+                columns: 8
+            });
+        });
+
+        $('#modal2 .typeGroup .del').click(function () {
+            $(this).closest('li').remove();
         });
 
         $('#clear').click(function () {
             $(this).hide();
             $('#sort').show();
 
-            //saveSort();
+            saveSort();
 
             $('#main  .nav-list').removeClass('bricks');
             $('#main  .nav-list').removeAttr('style');
             $('#main  .nav-list li').removeAttr('style');
-            $('.gridly').gridly('draggable', 'off');
+            $('.nav-list').gridly('draggable', 'off');
         });
-
-        var reordering = function ($elements) {
-            // Called before the drag and drop starts with the elements in their starting position.
-        };
-        var reordered = function (e) {
-            // Called after the drag and drop ends with the elements in their ending position.
-        };
     });
 
-    function addType() {
+    function insertType() {
         var name = $("#type_name").val();
-        $("#selType").append("<option value='" + name + "'>" + name + "</option>");
-        $('#modal2').modal('clear');
+        if (name.trim().length > 0){
+            $('#modal2 .typeGroup').append(' <li class="brick">'+name+'<a href="#" class="del"><i class="material-icons tiny">clear</i></a></li>');
+            $('#modal2 .typeGroup').gridly({
+                base: 40, // px
+                gutter: 45, // px
+                columns: 8
+            });
+            $("#type_name").val('');
+        }
+    }
+
+    function addType() {
+        $("#selType").empty();
+        $('#type_sort li').each(function () {
+            var name = $(this).html();
+            $("#selType").append('<option value="' + name + '">' + name + '</option>')
+        });
+        $('#modal2').modal('close');
         $('select').material_select();
     }
 
     function saveSort() {
-        var param = {};
+        var param = [];
         $('.main .container>ul>li').each(function () {
+            var obj = {};
             var typeName = $(this).find('h5').html();
-
             var tmp = {};
             $(this).find('ul>li').each(function () {
                 var oA = $(this).find('a');
 
                 var ct = {};
-                ct.href = $(oA).attr('href');
-                ct.name = $(oA).html();
+                ct.url = $(oA).attr('href');
+                ct.typeId = $(oA).attr('data-type');
+                ct.name = $(oA).html().replace(/^<img.*>/, '');
 
                 var self = $(this);
                 var left = self.css('left').replace(/px/, '');
@@ -235,14 +274,23 @@
                 var weight = parseInt(left) + parseInt(top) * 10000;
                 tmp[weight] = ct;
             });
+
             var arr = [];
             for (var i in tmp) {
                 var val = tmp[i];
                 arr.push(val);
             }
-            console.log(typeName);
-            console.log(JSON.stringify(arr));
+
+            obj.type = typeName;
+            obj.websiteList = arr;
+            param.push(obj);
         });
+
+        console.log(JSON.stringify(param));
+        /*$.post("/save", {"param": JSON.stringify(param)},
+            function (data) {
+                console.log(data.result);
+            }, "json");*/
     }
 
     function post() {
