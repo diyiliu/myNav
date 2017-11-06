@@ -244,10 +244,22 @@
 
     function addType() {
         $("#selType").empty();
-        $('#type_sort li').each(function () {
-            var name = $(this).html();
-            $("#selType").append('<option value="' + name + '">' + name + '</option>')
+        var tmp = [];
+        $('#modal2 .typeGroup li').each(function () {
+            var name = $(this).html().replace(/<a.*a>/, '');
+            var self = $(this);
+            var left = self.css('left').replace(/px/, '');
+            var top = self.css('top').replace(/px/, '');
+
+            //权重 = left + top * col_base
+            var weight = parseInt(left) + parseInt(top) * 10000;
+            tmp[weight] = name;
         });
+
+        for (var i in tmp){
+            var t = tmp[i];
+            $("#selType").append('<option value="' + t + '">' + t + '</option>')
+        }
         $('#modal2').modal('close');
         $('select').material_select();
     }
@@ -263,7 +275,6 @@
 
                 var ct = {};
                 ct.url = $(oA).attr('href');
-                ct.typeId = $(oA).attr('data-type');
                 ct.name = $(oA).html().replace(/^<img.*>/, '');
 
                 var self = $(this);
