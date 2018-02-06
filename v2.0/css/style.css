@@ -1,0 +1,53 @@
+
+/* Global properties ======================================================== */
+body {
+    background:#fff;
+    color:#454545;
+    font: 14px/1.5 "PingFang SC","Lantinghei SC","Microsoft YaHei","HanHei SC","Helvetica Neue","Open Sans",Arial,"Hiragino Sans GB","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif;
+}
+
+html {
+    min-width:940px;
+}
+
+html,
+body {
+    height:100%;
+}
+
+.wrap {
+    height:auto !important;
+    height:100%;
+    min-height:100%;
+    background:url(../image/bg.jpg) repeat-y center top;
+    min-width:940px;
+}
+
+.wrap .main{
+
+    height: 1050px;
+}
+
+/* Header */
+header {
+    min-width:940px;
+}
+
+header .container {
+    background: url(../image/bg-clear.png) repeat-y center top;
+    height:58px;
+    position:relative;
+    padding:0;
+}
+
+footer{
+    min-width:940px;
+    margin-top:-120px;
+}
+
+footer .container {
+    background: url(../image/bg-clear.png) repeat-y center top;
+    height:120px;
+    position:relative;
+    padding:0;
+}
